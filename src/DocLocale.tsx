@@ -14,9 +14,9 @@ const DocLocale = () => (
       />
     </div>
 
-    <p style={{ fontSize: "13px", color: "#6b7280", marginBottom: "8px", flexShrink: 0 }}>test-sheet.xlsx</p>
+    <p style={{ fontSize: "13px", color: "#6b7280", marginBottom: "8px", flexShrink: 0 }}>test-sheet3.xlsx</p>
     <div style={{ flex: 1, border: "1px solid #e5e7eb", borderRadius: "8px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
-      <SheetViewer file="/docs/test-sheet2.xlsx" locale="en" width="100%" />
+      <SheetViewer file="/docs/test-sheet3.xlsx" locale="en" width="100%" />
     </div>
   </div>
 );
