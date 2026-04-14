@@ -4,9 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // base: '/test-react-doc-viewer/',
   resolve: {
     dedupe: ["react", "react-dom"],
   },
-  base: '/test-react-doc-viewer/',
-
 })

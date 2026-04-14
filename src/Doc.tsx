@@ -1,7 +1,9 @@
 import { useState } from "react";
 import DocViewer, { DocViewerRenderers } from "@iamjariwala/react-doc-viewer";
 import "@iamjariwala/react-doc-viewer/dist/index.css";
-import { SheetViewer, DocxViewer } from "react-office-viewer";
+import XlsxRenderer from "./XlsxRenderer";
+import DocxRenderer from "./DocxRenderer";
+import OfficeIframeRenderer from "./OfficeIframeRenderer";
 
 const FILE_TYPES = [
   { label: "PDF",                value: "pdf"  },
@@ -16,13 +18,10 @@ const FILE_TYPES = [
   { label: "ODT",                value: "odt"  },
 ];
 
-const SHEET_TYPES = new Set(["xlsx", "xls"]);
-const DOCX_TYPES  = new Set(["docx", "doc", "odt"]);
-
 const Doc = () => {
-  const [input, setInput]       = useState("");
-  const [fileType, setFileType] = useState(FILE_TYPES[0].value);
-  const [link, setLink]         = useState("");
+  const [input, setInput]           = useState("");
+  const [fileType, setFileType]     = useState(FILE_TYPES[0].value);
+  const [link, setLink]             = useState("");
   const [activeType, setActiveType] = useState(FILE_TYPES[0].value);
 
   const handleLoad = () => {
@@ -35,17 +34,6 @@ const Doc = () => {
   const handleClear = () => {
     setLink("");
     setInput("");
-  };
-
-  const renderViewer = () => {
-    if (SHEET_TYPES.has(activeType)) return <SheetViewer file={link} locale="en" width="100%" />;
-    if (DOCX_TYPES.has(activeType))  return <DocxViewer  file={link} locale="en" width="100%" />;
-    return (
-      <DocViewer
-        documents={[{ uri: link, fileType: activeType }]}
-        pluginRenderers={DocViewerRenderers}
-      />
-    );
   };
 
   return (
@@ -85,7 +73,10 @@ const Doc = () => {
 
       {link ? (
         <div style={{ flex: 1, border: "1px solid #e5e7eb", borderRadius: "8px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
-          {renderViewer()}
+          <DocViewer
+            documents={[{ uri: link, fileType: activeType }]}
+            pluginRenderers={[XlsxRenderer, DocxRenderer, OfficeIframeRenderer, ...DocViewerRenderers]}
+          />
         </div>
       ) : (
         <p style={{ color: "#9ca3af", fontSize: "14px" }}>Select a file type, enter a URL and click Load.</p>
