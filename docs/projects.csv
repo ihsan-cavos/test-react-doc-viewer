@@ -1,0 +1,4 @@
+name,description,created_at,stack,is_active,image_url
+E-Commerce Platform,A full-featured online store with cart payments and order management.,2024-01-15 08:00:00+00,"[""Next.js"",""Go"",""PostgreSQL"",""Redis""]",true,https://images.unsplash.com/photo-1556742049-0cfed4f6a45d
+Task Management App,A collaborative project management tool with real-time updates and kanban boards.,2024-03-22 10:30:00+00,"[""React"",""Go"",""Supabase"",""WebSocket""]",true,https://images.unsplash.com/photo-1611224923853-80b023f02d71
+Analytics Dashboard,A business intelligence dashboard that visualizes key metrics and sales data.,2024-06-10 14:00:00+00,"[""Vue.js"",""Go"",""ClickHouse"",""D3.js""]",false,https://images.unsplash.com/photo-1551288049-bebda4e38f71
